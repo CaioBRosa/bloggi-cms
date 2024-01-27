@@ -13,97 +13,72 @@
     <script src="https://kit.fontawesome.com/0b8b40c4fa.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header class="menubar" >
-        <nav class="menubar-items">
+    <header class="sidebar">
+        <div class="top">
+            <span class="title">Bloggi</span>
+            <i class="fa-solid fa-newspaper"></i>
+        </div>
+        <i class="fa-solid fa-bars" id="btn-menu"></i>
+        <figure class="user">
+            <img src="./img/default-user.png" alt="default-user" class="user-img">
+            <div class="hidden">
+                <p class="bold">Default User</p>
+                <p>Admin</p>
+            </div>
+        </figure>
+        <nav>
             <ul>
                 <li>
-                    <a href="#">
-                        <i class="fa-solid fa-gear"></i>
+                    <a href="#" class="option">
+                        <i class="fa-solid fa-gauge-high icon"></i>
+                        <span class="nav-item hidden">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa-solid fa-right-from-bracket"></i>
+                    <a href="#" class="option">
+                        <i class="fa-solid fa-book icon"></i>
+                        <span class="nav-item hidden">Posts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="option">
+                        <i class="fa-solid fa-rectangle-list icon"></i>
+                        <span class="nav-item hidden">Categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="option">
+                        <i class="fa-solid fa-envelope icon"></i>
+                        <span class="nav-item hidden">Mails</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="option">
+                        <i class="fa-solid fa-blog icon"></i>
+                        <span class="nav-item hidden">Website</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="option">
+                        <i class="fa-solid fa-gear icon"></i>
+                        <span class="nav-item hidden">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="option">
+                        <i class="fa-solid fa-right-from-bracket icon"></i>
+                        <span class="nav-item hidden">Logout</span>
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
-    <section class="sidebar">
-        <div class="top">
-            <div class="logo">
-                <span>Bloggi</span>
-                <i class="fa-solid fa-newspaper"></i>
-            </div>
-            <i class="fa-solid fa-bars" id="btn-menu"></i>
-        </div>
-        <div class="user">
-            <img src="./img/default-user.png" alt="default-user" class="user-img">
-            <div>
-                <p class="bold">Default User</p>
-                <p>Admin</p>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-gauge-high"></i>
-                        <span class="nav-item">Dashboard</span>
-                    </a>
-                    <span class="tooltip">Dashboard</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-book"></i>
-                        <span class="nav-item">Posts</span>
-                    </a>
-                    <span class="tooltip">Posts</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        <span class="nav-item">Categories</span>
-                    </a>
-                    <span class="tooltip">Categories</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span class="nav-item">Mails</span>
-                    </a>
-                    <span class="tooltip">Mails</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-blog"></i>
-                        <span class="nav-item">Website</span>
-                    </a>
-                    <span class="tooltip">Website</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-gear"></i>
-                        <span class="nav-item">Settings</span>
-                    </a>
-                    <span class="tooltip">Settings</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <span class="nav-item">Logout</span>
-                    </a>
-                    <span class="tooltip">Logout</span>
-                </li>
-            </ul>
-        </nav>
-    </section>
-    <main class="main-content">
-        <div class="container">
-            <h1>bloggi</h1>
-        </div>
+
+    <main>
+        <h1>bloggi</h1>
     </main>
-    <footer class="footer">
+
+    <footer>
     </footer>
 
     <!-- Dashboard js -->
