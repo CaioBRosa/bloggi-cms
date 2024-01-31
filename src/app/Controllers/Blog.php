@@ -11,7 +11,8 @@ class Blog extends BaseController
 
         $data = [
             "title"=> "Inicio",
-            "post"=> $postModel->findAll(),
+            "post"=> $postModel->paginate(6),
+            "pager"=> $postModel->pager,
         ];
 
         return view('pages/blog/home', $data);
