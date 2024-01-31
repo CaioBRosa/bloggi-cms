@@ -5,22 +5,15 @@
         <div class="row tm-row">
             <!-- artigos -->
             <?php if ($post): ?>
-                <?php
-                $reversedPosts = array_reverse($post);
-                $totalPosts = count($post);
-                ?>
-                <?php foreach ($reversedPosts as $post): ?>
-                    <?php
-                    $postId = $post['post_id'];
-                    $isNew = ($postId == $reversedPosts[0]['post_id']);
-                    ?>
+                <?php $ultimoId = $post[0]['post_id']; ?>
+                <?php foreach ($post as $post): ?>
                     <article class="col-12 col-md-6 tm-post">
                         <hr class="tm-hr-primary">
                         <a href="<?= base_url('post/'.$post['post_id']) ?>" class="effect-lily tm-post-link tm-pt-60">
                             <div class="tm-post-link-inner">
                                 <img src="assets/img/<?= $post['post_thumbnail'] ?>" alt="Image" class="img-fluid">
                             </div>
-                            <?php if ($isNew): ?>
+                            <?php if ($post['post_id'] == $ultimoId): ?>
                                 <span class="position-absolute tm-new-badge">Novo</span>
                             <?php endif; ?>
                             <!-- titulo do post -->
