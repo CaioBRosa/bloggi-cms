@@ -17,4 +17,10 @@ class PostModel extends Model
         'post_date'
     ];
 
+    public function getPosts()
+    {
+        $this->orderBy('post_id','desc');
+        return $this;
+    }
+
 }

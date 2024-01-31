@@ -11,7 +11,7 @@ class Blog extends BaseController
 
         $data = [
             "title"=> "Inicio",
-            "post"=> $postModel->paginate(6),
+            "post"=> $postModel->getPosts()->paginate(10),
             "pager"=> $postModel->pager,
         ];
 
