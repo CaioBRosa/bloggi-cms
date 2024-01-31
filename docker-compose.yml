@@ -1,0 +1,53 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_bloggi
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./sql/initdb:/docker-entrypoint-initdb.d"
+      - "./config/mysql-config.cnf:/etc/mysql/conf.d/config.cnf"
+    networks:
+      - net-docker
+
+  www:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        USER_ID: ${USER_ID}
+        GROUP_ID: ${GROUP_ID}
+    container_name: www_bloggi
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./:/var/www/bloggi"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - net-docker
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_bloggi
+    environment:
+      PMA_HOST: ${DB_HOST}
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - net-docker
+
+networks:
+  net-docker:
+    driver: bridge
