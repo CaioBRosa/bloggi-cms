@@ -6,6 +6,10 @@ class CMS extends BaseController
 {
     public function index(): string
     {
-        return view('pages/cms/home');
+        $data = [
+            "title"=> "DASHBOARD",
+        ];
+
+        return view('pages/cms/home', $data);
     }
 }
