@@ -11,7 +11,7 @@
                         <div class="mb-4">
                             <h2 class="pt-2 tm-color-primary tm-post-title"><?= $post['post_title']; ?></h2>
                             <p class="tm-mb-40"><?= $post['post_date']; ?><span class="pl-5"><?= $post['post_author']; ?></span></p>
-                            <p><?= $post['post_content']; ?></p>
+                            <p><?= nl2br($post['post_content']); ?></p>
                         </div>
                     <?php else: ?>
                         <p>Post não encontrado.</p> 
