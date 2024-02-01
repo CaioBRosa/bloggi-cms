@@ -12,4 +12,8 @@ $routes->get('/post/(:num)', 'Blog::post/$1');
 $routes->get('/sobre', 'Blog::sobre');
 $routes->get('/contato', 'Blog::contato');
 
+$routes->get('/login','Login::index');
+$routes->post('/login','Login::login');
+$routes->get('/logout','Login::logout');
+
 $routes->get('/app/dashboard','CMS::index');
