@@ -401,17 +401,17 @@ a:hover figcaption { color: #056767; }
 .tm-social-links li a {
     display: block;
     color: white;
-    background-color: #0CC;
+    background-color: #1F7343;
     width: 45px;
     height: 45px;    
     margin-right: 15px;    
 }
 
 .tm-social-links li a i { transition: all 0.3s ease; }
-.tm-social-links li a:hover i.fa-facebook { color: #3b5998; }
-.tm-social-links li a:hover i.fa-twitter { color: #00acee; }
-.tm-social-links li a:hover i.fa-youtube { color: #c4302b; }
-.tm-social-links li a:hover i.fa-instagram { color: #3f729b; }
+.tm-social-links li a:hover i.fa-facebook { color: #f2edd546; }
+.tm-social-links li a:hover i.fa-twitter { color: #f2edd546; }
+.tm-social-links li a:hover i.fa-youtube { color: #f2edd546; }
+.tm-social-links li a:hover i.fa-instagram { color: #f2edd546; }
 
 .tm-contact-right { padding-left: 55px; }
 .tm-contact-form { max-width: 488px; }
