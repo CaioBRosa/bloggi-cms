@@ -23,4 +23,11 @@ class PostModel extends Model
         return $this;
     }
 
+    public function pesquisarNoBanco($termoPesquisa) {
+        return $this->like('post_title', $termoPesquisa)
+                    ->orLike('post_description', $termoPesquisa)
+                    ->orLike('post_content', $termoPesquisa)
+                    ->findAll();
+    }
+
 }
