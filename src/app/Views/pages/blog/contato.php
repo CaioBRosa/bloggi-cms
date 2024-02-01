@@ -75,7 +75,7 @@
                     <i class="fab fa-youtube"></i>
                 </a>
             </li>
-            <li class="mb-2">
+            <li class="mb-2 ">
                 <a href="https://instagram.com" class="d-flex align-items-center justify-content-center mr-0">
                     <i class="fab fa-instagram"></i>
                 </a>
