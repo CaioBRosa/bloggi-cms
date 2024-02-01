@@ -41,17 +41,15 @@
         </form>
     </div>
     <div class="col-lg-5 tm-contact-right">
-        <address class="mb-4 tm-color-gray">
+        <div class="mb-4 tm-color-gray">
             120 Lorem ipsum dolor sit amet,
             consectetur adipiscing 10550
-        </address>
+        </div>
         <span class="d-block">
-            Tel:
-            <a href="tel:060-070-0980" class="tm-color-gray">060-070-0980</a>
+            Tel: 060-070-0980
         </span>
         <span class="mb-4 d-block">
-            Email:
-            <a href="mailto:info@company.com" class="tm-color-gray">info@company.com</a>
+            Email: info@company.com
         </span>
         <p class="mb-5 tm-line-height-short">
             Maecenas eu mi eu dui cursus

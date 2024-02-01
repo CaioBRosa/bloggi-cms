@@ -68,7 +68,7 @@
         <!-- Search form -->
         <div class="row tm-row">
             <div class="col-12">
-                <form method="get" action="<?= base_url('search') ?>" class="form-inline tm-mb-80 tm-search-form">
+                <form method="GET" action="<?= base_url('search') ?>" class="form-inline tm-mb-80 tm-search-form">
                     <input class="form-control tm-search-input" name="query" type="text" placeholder="Pesquisar..."
                         aria-label="Search">
                     <button class="tm-search-button" type="submit">
