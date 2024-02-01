@@ -18,6 +18,20 @@ class Blog extends BaseController
         return view('pages/blog/home', $data);
     }
 
+    public function search(): string
+    {
+        $postModel = new PostModel();
+        $termoPesquisa = $this->request->getGet('query');
+
+        $data = [
+            "title"=> "Inicio",
+            "termoPesquisa"=> $postModel->pesquisarNoBanco($termoPesquisa),
+            "post"=> $postModel->getPosts(),
+        ];
+
+        return view('pages/blog/search', $data);
+    }
+
     public function post($id): string
     {
         $postModel = new PostModel();
