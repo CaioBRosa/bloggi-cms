@@ -1,3 +1,19 @@
+<?php
+$session = \Config\Services::session();
+
+$ultimoPost = session()->get('ultimo_id');
+
+if (!$ultimoPost) {
+    $ultimoId = $post[0]['post_id'];
+    $session->set('ultimo_id', $ultimoId);
+}
+
+$ultimoURI = 'post/' . $ultimoPost;
+$currentURI = uri_string();
+
+// Verifica se a URI atual corresponde ao último post e aplica a classe 'active' se necessário
+$isActive = strpos($currentURI, $ultimoURI) !== false ? 'active' : '';
+?>
 <header class="tm-header" id="tm-header">
     <div class="tm-header-wrapper">
         <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
@@ -19,19 +35,13 @@
                     </a>
                 </li>
                 <?php if (isset($post)) : ?>
-                    <?php
-                        $ultimoPost = end($post);
-                        $ultimoPostId = isset($ultimoPost['post_id']) ? (string) $ultimoPost['post_id'] : '';
-                        $ultimoPostURI = 'post/' . $ultimoPostId;
-                        $currentURI = uri_string();
-                    ?>
-                    <li class="tm-nav-item <?= (strpos($currentURI, $ultimoPostURI) !== false) ? 'active' : ''; ?>">
-                        <a href="<?= base_url($ultimoPostURI); ?>" class="tm-nav-link">
+                    <li class="tm-nav-item <?= $isActive ?>">
+                        <a href="<?= base_url($ultimoURI); ?>" class="tm-nav-link">
                             <i class="fas fa-pen"></i>
                             Último Post
                         </a>
-                    </li>    
-                <?php endif; ?>      
+                    </li>
+                <?php endif; ?>        
                 <li class="tm-nav-item <?= (uri_string() === 'sobre') ? 'active' : ''; ?>">
                     <a href="<?= base_url('sobre') ?>" class="tm-nav-link">
                         <i class="fas fa-user"></i>

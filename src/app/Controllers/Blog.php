@@ -9,9 +9,11 @@ class Blog extends BaseController
     {
         $postModel = new PostModel();
 
+        $postsPaginados = $postModel->getPosts()->paginate(10);
+
         $data = [
             "title"=> "Inicio",
-            "post"=> $postModel->getPosts()->paginate(10),
+            "post"=> $postsPaginados,
             "pager"=> $postModel->pager,
         ];
 
