@@ -14,45 +14,59 @@ class Login extends BaseController
         return view('pages/login', $data);
     }
 
-    //public function insert(): string
-    //{
-    //    $data = [
-    //        'users_name' => 'teste',
-    //        'users_email'=> 'teste@teste.dev',
-    //        'users_password'=> password_hash('123456', PASSWORD_DEFAULT),
-    //    ] ;
+    /*public function insert(): string
+    {
+        $data = [
+            'users_name' => 'teste',
+            'users_email'=> 'teste@teste.dev',
+            'users_password'=> password_hash('123456', PASSWORD_DEFAULT),
+        ] ;
 
-    //   (new UsersModel())->save($data);
-    //}
+      (new UsersModel())->save($data);
+    }*/
 
     public function login()
     {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $validated = $this->validate([
+            'email' => 'required|valid_email',
+            'password' => 'required',
+        ],[
+            'email'=> [
+                'required' => 'E-mail obrigatorio',
+                'valid_email' => 'E-mail nao valido',
+            ],
+            'password'=> [
+                'required'=> 'Senha obrigatorio',
+            ]
+        ]);
+
+        if (!$validated) {
+            return redirect()->route('login')->with('errors', $this->validator->getErrors());
+        } else {
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+        }
 
         $usersModel = new UsersModel();
 
-        $dataUser = $usersModel->getByEmail($email);
-
-        if (count($dataUser) > 0) {
-            $hashUser = $dataUser['users_password'];
-            if (password_verify($password, $hashUser)) {
-                session()->set('isLoggedIn', true);
-                session()->set('nome', $dataUser['users_name']);
-                return redirect()->to(base_url('/app/dashboard'));
-            } else {
-                session()->setFlashData('msg', 'E-mail ou Senha incorretos');
-                return redirect()->to(base_url('login'));
-            }
+        $user = $usersModel->getByEmail($email);
+        if (!$user) {
+            return redirect()->route('login')->with('message', 'E-mail ou senha incorretos');
         } else {
-            session()->setFlashData('msg', 'E-mail ou Senha incorretos');
-			return redirect()->to(base_url('login'));
+            $hashUserPassword = $user['users_password'];
+            if (!password_verify($password, $hashUserPassword)) {
+                return redirect()->route('login')->with('message', 'E-mail ou senha incorretos');
+            } else {
+                unset($user['users_password']);
+                session()->set('isLoggedIn', true);
+                session()->set('nome', $user['users_name']);
+                return redirect()->route('app/dashboard');
+            }
         }
     }
 
     public function logout()
     {
-        session()->destroy();
         return redirect()->to(base_url('login'));
     }
 }
