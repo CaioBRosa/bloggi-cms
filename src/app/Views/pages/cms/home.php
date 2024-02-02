@@ -17,7 +17,7 @@
 
 			<h1>Welcome to CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></h1>
 
-			<h2>Clique <?php echo anchor(base_url('logout'), 'aqui') ?> para sair.</h2>
+			<h2>Clique <?php echo anchor('logout', 'aqui') ?> para sair.</h2>
 			<p><?php echo session()->nome ?></p>
 
 		</div>

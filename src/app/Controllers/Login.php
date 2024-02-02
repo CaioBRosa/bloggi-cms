@@ -49,24 +49,23 @@ class Login extends BaseController
 
         $usersModel = new UsersModel();
 
-        $user = $usersModel->getByEmail($email);
-        if (!$user) {
-            return redirect()->route('login')->with('message', 'E-mail ou senha incorretos');
-        } else {
-            $hashUserPassword = $user['users_password'];
-            if (!password_verify($password, $hashUserPassword)) {
-                return redirect()->route('login')->with('message', 'E-mail ou senha incorretos');
-            } else {
-                unset($user['users_password']);
+        $dataUser = $usersModel->getByEmail($email);
+
+        if (count($dataUser) > 0) {
+            $hashUser = $dataUser['users_password'];
+            if (password_verify($password, $hashUser)) {
+                unset($hashUser);
                 session()->set('isLoggedIn', true);
-                session()->set('nome', $user['users_name']);
-                return redirect()->route('app/dashboard');
+                session()->set('nome', $dataUser['users_name']);
+                return redirect()->to(base_url('app/dashboard'));
             }
         }
+
     }
 
     public function logout()
     {
+        session()->destroy();
         return redirect()->to(base_url('login'));
     }
 }

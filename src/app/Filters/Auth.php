@@ -10,10 +10,12 @@ class Auth implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
+        if (!session()->has('isLoggedIn')) {
+            return redirect()->to(base_url('login'));
+        }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Do something here
     }
 }
