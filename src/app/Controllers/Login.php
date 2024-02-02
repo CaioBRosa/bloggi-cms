@@ -7,23 +7,18 @@ class Login extends BaseController
 {
     public function index(): string
     {
-        $data = [
-            "title"=> "Login",
-        ];
-
-        return view('pages/login', $data);
+        // Verificar se o usuário está logado
+        if (session()->has("isLoggedIn")) {
+            header("Location: " . base_url('app/dashboard'));
+            exit();
+        } else {
+            $data = [
+                "title" => "Login",
+            ];
+    
+            return view('pages/login', $data);
+        }
     }
-
-    /*public function insert(): string
-    {
-        $data = [
-            'users_name' => 'teste',
-            'users_email'=> 'teste@teste.dev',
-            'users_password'=> password_hash('123456', PASSWORD_DEFAULT),
-        ] ;
-
-      (new UsersModel())->save($data);
-    }*/
 
     public function login()
     {
@@ -54,7 +49,6 @@ class Login extends BaseController
         if (count($dataUser) > 0) {
             $hashUser = $dataUser['users_password'];
             if (password_verify($password, $hashUser)) {
-                unset($hashUser);
                 session()->set('isLoggedIn', true);
                 session()->set('nome', $dataUser['users_name']);
                 return redirect()->to(base_url('app/dashboard'));
