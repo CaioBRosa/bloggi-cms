@@ -1,12 +1,14 @@
 <?php
 $session = \Config\Services::session();
 
-$ultimoPost = reset($post);
-$ultimoId = isset($ultimoPost['post_id']) ? (string) $ultimoPost['post_id'] : '';
-$session->set('ultimo_id', $ultimoId);
-$ultimoIdNaSessao = $session->get('ultimo_id');
+$ultimoPost = session()->get('ultimo_id');
 
-$ultimoURI = 'post/' . $ultimoIdNaSessao;
+if (!$ultimoPost) {
+    $ultimoId = $post[0]['post_id'];
+    $session->set('ultimo_id', $ultimoId);
+}
+
+$ultimoURI = 'post/' . $ultimoPost;
 $currentURI = uri_string();
 
 // Verifica se a URI atual corresponde ao último post e aplica a classe 'active' se necessário

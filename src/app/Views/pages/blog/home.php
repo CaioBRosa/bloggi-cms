@@ -1,3 +1,7 @@
+<?php 
+$session = \Config\Services::session();
+$ultimoId = $session->get('ultimo_id');
+?>
 <?= $this->extend('layouts/blog/index') ?>
 
 <?= $this->section('content') ?>
@@ -5,15 +9,6 @@
         <div class="row tm-row">
             <!-- artigos -->
             <?php if ($post): ?>
-                <?php 
-                $session = \Config\Services::session();
-                $ultimoId = $session->get('ultimo_id');
-
-                if (!$ultimoId) {
-                    $ultimoId = $post[0]['post_id'];
-                    $session->set('ultimo_id', $ultimoId);
-                }
-                ?>
                 <?php foreach ($post as $post): ?>
                     <article class="col-12 col-md-6 tm-post">
                         <hr class="tm-hr-primary">
