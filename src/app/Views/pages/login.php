@@ -16,15 +16,16 @@
     <main class="container">
         <h1>Bloggi</h1>
         <h2>Login</h2>
-        <?php $msg = session()->getFlashData('msg') ?>
-        <?php if (!empty($msg)) : ?>
-            <?php echo $msg ?>
+        <?php if (session()->has('message')) : ?>
+            <?php echo session()->getFlashdata('message'); ?>
         <?php endif; ?>
         <form method="POST" action="<?= base_url('login') ?>">
+            <?php echo session()->getFlashdata('errors')['email'] ?? ''; ?>
             <section>
                 <i class="fa-solid fa-circle-user fa-3x user_icon"></i>
                 <input type="text" class="input" name="email">
             </section>
+            <?php echo session()->getFlashdata('errors')['password'] ?? ''; ?>
             <section>
                 <i class="fa-solid fa-key fa-3x passwd_icon"></i>
                 <input type="password" class="input" name="password">

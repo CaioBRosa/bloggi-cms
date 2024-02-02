@@ -16,4 +16,5 @@ $routes->get('/login','Login::index');
 $routes->post('/login','Login::login');
 $routes->get('/logout','Login::logout');
 
+//dashboard
 $routes->get('/app/dashboard','CMS::index');

@@ -7,28 +7,40 @@ class Login extends BaseController
 {
     public function index(): string
     {
-        $data = [
-            "title"=> "Login",
-        ];
-
-        return view('pages/login', $data);
+        // Verificar se o usuário está logado
+        if (session()->has("isLoggedIn")) {
+            header("Location: " . base_url('app/dashboard'));
+            exit();
+        } else {
+            $data = [
+                "title" => "Login",
+            ];
+    
+            return view('pages/login', $data);
+        }
     }
-
-    //public function insert(): string
-    //{
-    //    $data = [
-    //        'users_name' => 'teste',
-    //        'users_email'=> 'teste@teste.dev',
-    //        'users_password'=> password_hash('123456', PASSWORD_DEFAULT),
-    //    ] ;
-
-    //   (new UsersModel())->save($data);
-    //}
 
     public function login()
     {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $validated = $this->validate([
+            'email' => 'required|valid_email',
+            'password' => 'required',
+        ],[
+            'email'=> [
+                'required' => 'E-mail obrigatorio',
+                'valid_email' => 'E-mail nao valido',
+            ],
+            'password'=> [
+                'required'=> 'Senha obrigatorio',
+            ]
+        ]);
+
+        if (!$validated) {
+            return redirect()->route('login')->with('errors', $this->validator->getErrors());
+        } else {
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+        }
 
         $usersModel = new UsersModel();
 
@@ -39,15 +51,10 @@ class Login extends BaseController
             if (password_verify($password, $hashUser)) {
                 session()->set('isLoggedIn', true);
                 session()->set('nome', $dataUser['users_name']);
-                return redirect()->to(base_url('/app/dashboard'));
-            } else {
-                session()->setFlashData('msg', 'E-mail ou Senha incorretos');
-                return redirect()->to(base_url('login'));
+                return redirect()->to(base_url('app/dashboard'));
             }
-        } else {
-            session()->setFlashData('msg', 'E-mail ou Senha incorretos');
-			return redirect()->to(base_url('login'));
         }
+
     }
 
     public function logout()

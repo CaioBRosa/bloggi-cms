@@ -37,15 +37,15 @@ class Filters extends BaseConfig
         'before' => [
             'auth'=> [
                 'except' => [
-                    'login/*',
-                    'login/',
+                    'login',
                     '/',
                     'search/*',
+                    'search/',
                     'post/*',
                     'sobre',
                     'contato'
-                ]
-            ]
+                ],
+            ],
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',

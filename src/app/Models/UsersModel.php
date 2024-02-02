@@ -14,9 +14,8 @@ class UsersModel extends Model
         "users_password"
     ];
 
-    public function getByEmail(string $email) : array
+    public function getByEmail($email)
     {
-        $user = $this->where("users_email", $email)->first();
-        return !is_null($user) ? $user : [];
+        return $this->where("users_email", $email)->first();
     }
 }
