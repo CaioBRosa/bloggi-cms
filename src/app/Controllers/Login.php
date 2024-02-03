@@ -5,19 +5,18 @@ use App\Models\UsersModel;
 
 class Login extends BaseController
 {
-    public function index(): string
+    public function index()
     {
-        // Verificar se o usuário está logado
         if (session()->has("isLoggedIn")) {
             header("Location: " . base_url('app/dashboard'));
             exit();
-        } else {
-            $data = [
-                "title" => "Login",
-            ];
-    
-            return view('pages/login', $data);
         }
+
+        $data = [
+            "title" => "Login",
+        ];
+
+        return view('pages/login', $data);
     }
 
     public function login()
@@ -40,18 +39,22 @@ class Login extends BaseController
         } else {
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
-        }
 
-        $usersModel = new UsersModel();
+            $usersModel = new UsersModel();
 
-        $dataUser = $usersModel->getByEmail($email);
+            $dataUser = $usersModel->getByEmail($email);
 
-        if (count($dataUser) > 0) {
-            $hashUser = $dataUser['users_password'];
-            if (password_verify($password, $hashUser)) {
-                session()->set('isLoggedIn', true);
-                session()->set('nome', $dataUser['users_name']);
-                return redirect()->to(base_url('app/dashboard'));
+            if (count($dataUser) > 0) {
+                $hashUser = $dataUser['users_password'];
+                if (password_verify($password, $hashUser)) {
+                    session()->set('isLoggedIn', true);
+                    session()->set('nome', $dataUser['users_name']);
+                    return redirect()->to(base_url('app/dashboard'));
+                } else {
+                    return redirect()->route('login')->with('message', "E-mail ou senha incorreto");
+                }
+            } else {
+                return redirect()->route('login')->with('message', "E-mail ou senha incorreto");
             }
         }
 
