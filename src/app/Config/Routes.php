@@ -20,4 +20,9 @@ $routes->get('/logout','Login::logout');
 
 $routes->group('app', function ($routes) {
     $routes->get('dashboard','CMS::index');
+    $routes->get('posts','CMS::post');
+    $routes->get('categories','CMS::categories');
+    $routes->get('commments','CMS::comments');
+    $routes->get('website','CMS::website');
+    $routes->get('settings','CMS::settings');
 });
