@@ -20,7 +20,11 @@ $routes->get('/logout','Login::logout');
 
 $routes->group('app', function ($routes) {
     $routes->get('dashboard','CMS::index');
-    $routes->get('posts','CMS::posts');
+
+    $routes->get('posts','Post::index');
+    $routes->get('posts/newpost','Post::newPost');
+
+
     $routes->get('categories','CMS::categories');
     $routes->get('comments','CMS::comments');
     $routes->get('website','CMS::website');

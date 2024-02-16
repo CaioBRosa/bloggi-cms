@@ -13,15 +13,6 @@ class CMS extends BaseController
         return view('pages/cms/home', $data);
     }
 
-    public function posts()
-    {
-        $data = [
-            "title"=> "Posts",
-        ];
-
-        return view('pages/cms/posts', $data);
-    }
-
     public function categories()
     {
         $data = [
