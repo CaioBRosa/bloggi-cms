@@ -10,13 +10,13 @@
         <!-- sidebar -->
         <ul class="sidebar-nav">
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#dashboard" data-bs-toggle="collapse">
+                <a class="sidebar-link collapsed" data-bs-target="#dashboard" data-bs-toggle="collapse">
                     <i class="fa-solid fa-gauge-high icon"></i>
                     Dashboard
                 </a>
                 <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link sidebar-subcontent">Visão Geral</a>
+                        <a href="<?= base_url('app/dashboard') ?>   " class="sidebar-link sidebar-subcontent">Visão Geral</a>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link sidebar-subcontent">Estatisticas</a>
@@ -25,7 +25,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#posts" data-bs-toggle="collapse" aria-expanded="false">
+                <a class="sidebar-link collapsed" data-bs-target="#posts" data-bs-toggle="collapse" aria-expanded="false">
                     <i class="fa-solid fa-book icon"></i>
                     Posts
                 </a>
@@ -34,7 +34,7 @@
                         <a href="#" class="sidebar-link sidebar-subcontent">Novo Post</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link sidebar-subcontent">Gerenciar</a>
+                        <a href="<?= base_url('app/posts') ?>" class="sidebar-link sidebar-subcontent">Gerenciar</a>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link sidebar-subcontent">Categorias</a>
@@ -43,7 +43,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#categories" data-bs-toggle="collapse" aria-expanded="false">
+                <a class="sidebar-link collapsed" data-bs-target="#categories" data-bs-toggle="collapse" aria-expanded="false">
                     <i class="fa-solid fa-rectangle-list icon"></i>
                     Categorias
                 </a>
@@ -52,13 +52,13 @@
                         <a href="#" class="sidebar-link sidebar-subcontent">Nova Categoria</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link sidebar-subcontent">Gerenciar</a>
+                        <a href="<?= base_url('app/categories') ?>" class="sidebar-link sidebar-subcontent">Gerenciar</a>
                     </li>
                 </ul>
             </li>
 
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#comments" data-bs-toggle="collapse" aria-expanded="false">
+                <a class="sidebar-link collapsed" data-bs-target="#comments" data-bs-toggle="collapse" aria-expanded="false">
                     <i class="fa-solid fa-envelope icon"></i>
                     Comentarios
                 </a>
@@ -67,31 +67,31 @@
                         <a href="#" class="sidebar-link sidebar-subcontent">Aprovar Comentarios</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link sidebar-subcontent">Gerenciar</a>
+                        <a href="<?= base_url('app/comments') ?>" class="sidebar-link sidebar-subcontent">Gerenciar</a>
                     </li>
                 </ul>
             </li>
 
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#website" data-bs-toggle="collapse" aria-expanded="false">
+                <a class="sidebar-link collapsed" data-bs-target="#website" data-bs-toggle="collapse" aria-expanded="false">
                     <i class="fa-solid fa-blog icon"></i>
                     Website
                 </a>
                 <ul id="website" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link sidebar-subcontent">Redes Sociais</a>
+                        <a href="<?= base_url('app/website') ?>" class="sidebar-link sidebar-subcontent">Redes Sociais</a>
                     </li>
                 </ul>
             </li>
 
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#settings" data-bs-toggle="collapse" aria-expanded="false">
+                <a class="sidebar-link collapsed" data-bs-target="#settings" data-bs-toggle="collapse" aria-expanded="false">
                     <i class="fa-solid fa-gear icon"></i>
                     Configurações
                 </a>
                 <ul id="settings" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link sidebar-subcontent">Perfil</a>
+                        <a href="<?= base_url('app/settings') ?>" class="sidebar-link sidebar-subcontent">Perfil</a>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link sidebar-subcontent">Conta</a>
@@ -100,7 +100,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
+                <a href="<?= base_url('logout') ?>" class="sidebar-link">
                     <i class="fa-solid fa-right-from-bracket icon"></i>
                     Logout
                 </a>
@@ -110,3 +110,9 @@
         <!-- sidebar -->
     </div>
 </aside>
+<div class="main">
+            <nav class="navbar navbar-expand px-3 border-bottom">
+                <button class="btn" id="sidebar-toggle" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
